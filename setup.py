@@ -6,7 +6,7 @@ import sys
 
 from codecs import open
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -39,8 +39,6 @@ if sys.argv[-1] == 'publish':
     os.system('twine upload dist/*')
     sys.exit()
 
-packages = ['weasl']
-
 requires = [
     'requests>=2.0.0,<3.0.0',
 ]
@@ -65,7 +63,7 @@ setup(
     long_description_content_type='text/markdown',
     author=about['__author__'],
     url=about['__url__'],
-    packages=packages,
+    packages=find_packages(),
     package_data={'': ['LICENSE', 'NOTICE'], 'requests': ['*.pem']},
     package_dir={'weasl': 'weasl'},
     include_package_data=True,
